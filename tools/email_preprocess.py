@@ -1,5 +1,4 @@
 #!/usr/bin/python
-
 import pickle
 import cPickle
 import numpy
