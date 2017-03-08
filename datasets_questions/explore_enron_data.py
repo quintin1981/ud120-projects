@@ -19,4 +19,23 @@ import pickle
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
+array = enron_data.keys()
 
+count = 0
+
+num_poi = 0
+
+while count < len(array):
+    if enron_data[array[count]]['poi'] == True:
+        num_poi = num_poi + 1
+        count = count + 1
+    else:
+        count = count + 1
+        
+print ("Number POI's: ", num_poi)
+        
+#key = array[2]
+
+#print enron_data[key]['poi']
+
+ 
