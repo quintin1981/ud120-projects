@@ -71,6 +71,24 @@ cluster.fit(finance_features)
 
 pred = cluster.predict(finance_features)
 
+
+count = 0
+
+
+count1 = 0
+
+min_max = []
+## code to add seelected data from financial_features\salary
+## to list and print sorted list
+while count < len(finance_features):
+    if finance_features[count][0] == 0:
+        count = count + 1
+    else:
+        min_max += [finance_features[count][0]]
+        print finance_features[count][0]
+        count = count + 1
+
+print sorted(min_max)
 ### rename the "name" parameter when you change the number of features
 ### so that the figure gets saved to a different file
 try:
