@@ -39,25 +39,39 @@ temp_counter = 0
 
 for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
     for path in from_person:
+        if name == "sara":
+            from_data.append("0")
+        else:
+            from_data.append("1")
         ### only look at first 200 emails when developing
         ### once everything is working, remove this line to run over full dataset
         temp_counter += 1
-        if temp_counter < 200:
-            path = os.path.join('..', path[:-1])
-            print path
-            email = open(path, "r")
+        #if temp_counter <= 10000:
+        print temp_counter
+        path = os.path.join('..', path[:-1])
+            #print path
+        email = open(path, "r")
+
 
             ### use parseOutText to extract the text from the opened email
-
+        text = parseOutText(email)
+        text1 = text.replace("sara", "")
+        text2 = text1.replace("shackleton", "")
+        text3 = text2.replace("chris", "")
+        text1 = text3.replace("germani", "")
+            
+            
+        word_data.append(text1)
+            
             ### use str.replace() to remove any instances of the words
             ### ["sara", "shackleton", "chris", "germani"]
 
             ### append the text to word_data
 
             ### append a 0 to from_data if email is from Sara, and 1 if email is from Chris
+           
 
-
-            email.close()
+        email.close()
 
 print "emails processed"
 from_sara.close()
