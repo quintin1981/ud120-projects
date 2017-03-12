@@ -27,13 +27,16 @@ def parseOutText(f):
     if len(content) > 1:
         ### remove punctuation
         text_string = content[1].translate(string.maketrans("", ""), string.punctuation)
-
+        count = 0
         ### project part 2: comment out the line below
-        words = text_string
+        stemmer = SnowballStemmer("english")
+        stem = string.split(text_string)
         ### split the text string into individual words, stem each word,
         ### and append the stemmed word to words (make sure there's a single
         ### space between each stemmed word)
-        
+        while count < len(stem):
+            words = words + " " + stemmer.stem(stem[count])
+            count = count + 1
 
 
 
@@ -42,9 +45,10 @@ def parseOutText(f):
     
 
 #def main():
-f = open("../text_learning/test_email.txt", "r")
-text = parseOutText(f)
-print text
+#f = open("../text_learning/test_email.txt", "r")
+#text = parseOutText(f)
+
+#print text
 
 
 
