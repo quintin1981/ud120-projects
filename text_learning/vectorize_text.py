@@ -58,9 +58,10 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
         text1 = text.replace("sara", "")
         text2 = text1.replace("shackleton", "")
         text3 = text2.replace("chris", "")
-        text1 = text3.replace("germani", "")
-            
-            
+        text4 = text3.replace("germani", "")
+        text5 = text4.replace("sshacklensf", "")    
+        text1 = text5.replace("cgermannsf", "")
+        
         word_data.append(text1)
             
             ### use str.replace() to remove any instances of the words
