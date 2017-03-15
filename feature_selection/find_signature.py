@@ -2,8 +2,9 @@
 
 import pickle
 import numpy
+import matplotlib.pyplot
+from feature_format import featureFormat
 numpy.random.seed(42)
-
 
 ### The words (features) and authors (labels), already largely processed.
 ### These files should have been created from the previous (Lesson 10)
@@ -27,7 +28,7 @@ vectorizer = TfidfVectorizer(sublinear_tf=True, max_df=0.5,
                              stop_words='english')
 features_train = vectorizer.fit_transform(features_train)
 features_test  = vectorizer.transform(features_test).toarray()
-
+terms = vectorizer.get_feature_names()
 
 ### a classic way to overfit is to use a small number
 ### of data points and a large number of features;
@@ -36,8 +37,38 @@ features_train = features_train[:150].toarray()
 labels_train   = labels_train[:150]
 
 
+from sklearn import tree
 
+clf = tree.DecisionTreeClassifier()
+clf = clf.fit(features_train, labels_train)
+
+pred = clf.predict(features_test)
+
+
+from sklearn.metrics import accuracy_score
+print "Accuracy: ", accuracy_score(pred, labels_test)
+
+data1 = [features_test, labels_test]
+
+for point in data1:
+    features_test = point[0]
+    labels_test = point[1]
+    matplotlib.pyplot.scatter( features_test, labels_test )
+
+matplotlib.pyplot.xlabel(features_test)
+matplotlib.pyplot.ylabel(labels_test)
+matplotlib.pyplot.show()
+###find important features
+"""
+importance = clf.feature_importances_
+
+indices = np.argsort(importance)[::-1]
+
+for f in range(features_train.shape[1]):
+    if importance[indices[f]] > 0.2:
+        print("%d. feature %d (%f)" % (f + 1, indices[f], importance[indices[f]]))
+        print ("feature name: ", terms[indices[f]])
+   """ 
 ### your code goes here
-
 
 
