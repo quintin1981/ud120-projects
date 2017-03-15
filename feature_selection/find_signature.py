@@ -3,7 +3,7 @@
 import pickle
 import numpy
 import matplotlib.pyplot
-from feature_format import featureFormat
+#from feature_format import featureFormat
 numpy.random.seed(42)
 
 ### The words (features) and authors (labels), already largely processed.
@@ -36,7 +36,7 @@ terms = vectorizer.get_feature_names()
 features_train = features_train[:150].toarray()
 labels_train   = labels_train[:150]
 
-
+#code to create and train decision tree classifier
 from sklearn import tree
 
 clf = tree.DecisionTreeClassifier()
